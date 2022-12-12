@@ -1,0 +1,412 @@
+@charset "UTF-8";
+/* 日本語 */
+
+
+/*--------------------------------
+ページ共通
+----------------------------------*/
+/*scss set*/
+$colorTxt:#333;
+// $colorLine:#fff;
+
+
+$f-fmaily:"Hiragino Sans","Hiragino Kaku Gothic ProN","Meiryo","sans-serif";
+
+$fz-list:1.2rem;
+$fz-txt:1.4rem;
+$fz-small:1.0rem;
+
+@mixin txt-set{
+    line-height: 1.7em;
+    text-align: justify;
+    color: $colorTxt;
+}
+@mixin flex-set {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+:root{
+    font-size: 62.5%;
+}
+body{
+    margin:0;
+    color: $colorTxt;
+    font-family:$f-fmaily;
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+a{
+    color: $colorTxt;
+}
+img{
+    max-width: 100%;
+    height: auto;
+    vertical-align:bottom;
+}
+
+.wrapper{
+
+    max-width: 1360px;
+    padding:0 40px;
+    margin: 0 auto;
+
+}
+
+//header
+.logo{
+    width: 180px;
+    height: auto;
+    display: block;
+}
+
+.header{
+    height: 90px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background: #fff;
+    &__inner{
+        @include flex-set;
+        height: 90px;
+    }
+}
+
+button{
+    display: block;
+}
+
+#hamburger{
+    position: relative;
+
+    width: 50px;
+    height:50px;
+    .bar{
+        display: inline-block;
+        transition: all .4s;/*アニメーションの設定*/
+        position: absolute;
+        left: 8px;
+        width: 70%;
+        height: 3px;
+        border-radius: 2px;
+        background: $colorTxt;
+    }
+    .bar:first-child {
+        top:15px;
+      }
+    .bar:last-child {
+        top:25px;
+      }
+}
+#hamburger.active{
+    .bar{
+        background: #fff;
+        z-index: 1000;
+    }
+    .bar:first-child {
+        top: 18px;
+        left: 8px;
+        transform: translateY(6px) rotate(-45deg);
+      }
+    .bar:last-child {
+        top: 30px;
+        left: 9px;
+        transform: translateY(-6px) rotate(45deg);
+      }
+
+}
+
+#menu{
+
+    line-height: 3.2em;
+    position: fixed;
+    z-index: 1000;
+    transition: all 0.6s;
+    top:20px;
+    left: -1000px;
+    .menu--link{
+        color: #fff;
+    }
+}
+#menu.active{
+    left: 40px;
+}
+
+
+#bgCover.active{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .8);
+}
+
+
+
+//main
+.container{
+    padding-top: 70px;
+    flex: 1;
+    width: 100%;
+
+}
+
+
+//footer
+.footer{
+    margin-top: 2em;
+    width: 100%;
+
+}
+.snsBox{
+    @include flex-set;
+    font-size: $fz-list;
+    justify-content: flex-start;
+    &--link{
+        margin-right: 2.4em;
+    }
+}
+.copyright{
+    padding: 2em 0 2em 0;
+    font-size: $fz-small;
+}
+
+/*PC*/
+@media screen and (min-width: 900px){
+    //footer
+    .footer{
+        @include flex-set;
+        margin-top: 4em;
+    }
+
+}
+
+
+
+
+/*--------------------------------
+TOPページ、Productページ
+----------------------------------*/
+//TOP Product
+.gridBox{
+    display: grid;
+    grid-template-columns: repeat(2 , 1fr);
+    // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap:24px;
+
+
+}
+.item{
+    font-size: $fz-list;
+    display: block;
+    &__title,&__price{
+        padding-top: .6em;
+    }
+}
+
+
+//TOP
+.btnMore{
+    text-align: center;
+    margin: 6em 0 8em 0;
+    &--link{
+        font-size:1.8rem;
+    }
+}
+
+
+//Product
+.pageTitle{
+    font-size: 1.6rem;
+    padding: 3em 0 3em 0;
+}
+
+.pagination{
+    @include flex-set;
+    justify-content: center;
+    padding: 4em 0;
+    li{
+        padding: .6em .8em;
+        margin: 0 10px;
+    }
+    .first,.prev,.next,.last{
+        display: none;
+    }
+    .pagination-active{
+        border: 1px solid $colorTxt;
+    }
+}
+
+/*--------------------------------
+itemページ
+----------------------------------*/
+.itemBox{
+    &__text{
+        margin-top: 1.6em;
+    }
+    &__explanation{
+        padding-bottom: 1.6em;
+        font-size: $fz-txt;
+        line-height: 1.7em;
+    }
+
+    &__price{
+        margin-top: 2em ;
+        font-size: $fz-list;
+    }
+    &__detail{
+        font-size: $fz-list;
+            dt,dd{
+                font-weight: normal;
+            }
+            div:first-child{
+                margin-top: 3em;
+
+            }
+            div{
+                line-height: 1.8em;
+            }
+        }
+
+}
+
+
+.btnBack{
+    text-align: center;
+    margin: 4em 0 6em 0;
+    &--link{
+        font-size:1.8rem;
+    }
+}
+
+
+/*--------------------------------
+Aboutページ
+----------------------------------*/
+.aboutBox{
+    &__text{
+        padding-bottom: 1.6em;
+        font-size: $fz-txt;
+        line-height: 1.7em;
+     }
+}
+
+/*--------------------------------
+companyページ
+----------------------------------*/
+.companyBox{
+
+    &__inner{
+        dt,dd{
+            font-weight: normal;
+            font-size: $fz-txt;
+            line-height: 2em;
+        }
+        dt{
+            padding-top: 2em;
+        }
+        dd{
+            border-bottom: 1px solid #DCDBDB;
+            padding-bottom: 2em;
+        }
+    }
+}
+
+.gmap{
+    width: 100%;
+    height: 400px;
+    margin-top: 60px;
+    margin-bottom: 120px;
+}
+
+
+/*PC*/
+@media screen and (min-width: 900px){
+    //TOP Product
+    .gridBox{
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    //TOP
+    .btnMore{
+        margin-top: 4em;
+    }
+    .header{
+        width: 100%;
+        position: initial; 
+        &__inner{
+            @include flex-set;
+            width: 100%;
+        }
+    }
+
+    .container{
+        padding-top: 0;
+    }
+
+    //Product
+    .pageTitle{
+        padding: 3em 0 4em 0;
+    }
+
+    //itemArea
+    .itemBox{
+        &__text{
+            margin-top:0;
+        }
+    }
+    .itemArea{
+        width: 800px;
+        &__inner{
+            width: 100%;
+            @include flex-set;
+            align-items: flex-start;
+        }
+        .itemBox__img,.itemBox__text{
+            width: calc((100% /2) - 32px);
+        }
+    }
+    .btnBack{
+        margin: 8em 0 8em 0;
+    }
+
+    //about
+    .aboutBox{
+        max-width: 600px;
+
+    }
+
+    //company
+    .companyBox{
+        max-width: 600px;
+        &__inner{
+            dt,dd{
+                font-weight: normal;
+                font-size: $fz-txt;
+                line-height: 2em;
+
+            }
+            dt{
+                padding-top: 2em;
+            }
+            dd{
+                border-bottom: 1px solid #DCDBDB;
+                padding-bottom: 2em;
+
+            }
+        }
+    }
+
+    .gmap{
+        width: 100%;
+        height: 400px;
+        margin-top: 100px;
+        margin-bottom: 200px;
+    }
+}
+
